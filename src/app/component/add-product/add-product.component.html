@@ -1,0 +1,57 @@
+<form class="container py-4" (ngSubmit)="addNewProduct()">
+  <label for="ProductName">ProductName</label>
+  <input
+    [(ngModel)]="product.name"
+    #InpName="ngModel"
+    type="text"
+    class="form-control"
+    id="ProductName"
+    name="name"
+    pattern="^[a-zA-Z]{3,12}$"
+    required
+  />
+  @if (InpName.touched) {
+  <div class="my-3">
+    @if (InpName.errors?.['required']) {
+    <span class="text-danger">name is required</span>
+    } @if (InpName.errors?.['pattern']) {
+    <span class="text-danger">name must be 3 char or more</span>
+    }
+  </div>
+  }
+  <label for="quantity">quantity</label>
+  <input
+    [(ngModel)]="product.quantity"
+    type="number"
+    class="form-control"
+    id="quantity"
+    name="quantity"
+  />
+  <label for="ProductPrice">ProductPrice</label>
+  <input
+    [(ngModel)]="product.price"
+    type="number"
+    class="form-control"
+    id="ProductPrice"
+    name="price"
+  />
+  <label for="product-image">productimage</label>
+  <input
+    [(ngModel)]="product.imageUrl"
+    type="file"
+    class="form-control"
+    id="product-image"
+  />
+  <label for="ca">Category</label>
+
+  <select name="cat" [(ngModel)]="product.ctgId" class="select form-control">
+    @for (l of catList; track $index) {
+    <option [value]="l.id">{{ l.name }}</option>
+    }
+  </select>
+
+  <button class="btn mt-3 form-control b" id="bt">AddProduct</button>
+</form>
+<button (click)="saveProduct()" class="btn mt-3 form-control b" id="bt">
+  save
+</button>

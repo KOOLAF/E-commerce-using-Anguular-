@@ -1,0 +1,7 @@
+<select class="form-select" [(ngModel)]="selectedCatId">
+  <option *ngFor="let c of cat" value="{{ c.id }}">{{ c.name }}</option>
+  {{
+    selectedCatId
+  }}
+</select>
+<app-product [recId]="selectedCatId" #productComponent></app-product>

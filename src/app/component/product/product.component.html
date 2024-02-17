@@ -1,0 +1,45 @@
+<div class="row d-flex gap-5 justify-content-center pt-5">
+  <div
+    class="col-2 card div1"
+    *ngFor="let p of fillterdProduct"
+    [ngStyle]="{ 'background-color': p.quantity == 1 ? 'yellow' : 'white' }"
+  >
+    <div class="product-card pt-4">
+      <div class="d-flex justify-content-center align-items-center">
+        <img
+          src="{{ p.imageUrl }}"
+          alt="Product Image"
+          class="product-image w-75"
+        />
+      </div>
+      <h3>{{ p.name }}</h3>
+      <!-- <span *ngIf="p.quantity == 0" style="color: red; font-size:larger"
+        >OUtOFStock</span
+      > -->
+
+      <p>
+        @if (p.quantity==0) {
+        <span style="color: red; font-size: larger">OutOfSTOCK</span>
+        }@else {
+        <span> quantity is:{{ p.quantity }}</span>
+        }
+      </p>
+      <p>
+        Description of the product goes here. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.
+      </p>
+      <p>
+        <strong>{{ p.price }}$</strong>
+      </p>
+      <div>
+        <input type="number" class="form-control" #counter />
+      </div>
+      <div class="d-flex flex-row justify-content-center pb-4 pt-4 g-4">
+        <button class="btn b1">Add to Bag</button>
+        <button class="btn b1" (click)="detail(p.id)">details</button>
+        <button class="btn b1" (click)="deleteProduct(p.id)">Delete</button>
+        <button class="btn b1" (click)="edit(p.id, p)">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="card m-auto" style="width: 18rem">
+  <img [src]="product?.imageUrl" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ product?.name }}</h5>
+    <p class="card-text">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </p>
+    <div class="d-flex justify-content-center align-items-center gap-4">
+      <a class="btn btn-primary" (click)="goBack()">back</a>
+      <a class="btn btn-primary" (click)="pre()">pre</a>
+      <a class="btn btn-primary" (click)="goBack()">next</a>
+    </div>
+  </div>
+</div>
